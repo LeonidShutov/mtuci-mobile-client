@@ -29,7 +29,7 @@
                 android:id="@+id/buClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onOperation"
+                android:onClick="onAc"
                 android:text="AC" />
 
             <Button
@@ -43,7 +43,7 @@
                 android:id="@+id/buPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onOperation"
+                android:onClick="onPercent"
                 android:text="%" />
 
             <Button
@@ -172,7 +172,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onOperation"
+            android:onClick="onNumber"
             android:text="." />
 
         <Button

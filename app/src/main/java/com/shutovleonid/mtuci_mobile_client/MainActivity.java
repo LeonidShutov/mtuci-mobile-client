@@ -18,25 +18,25 @@ import org.jetbrains.annotations.NotNull;
 
 
 public final class MainActivity extends AppCompatActivity {
-    @NotNull
+
     private String oldValue = "";
     private boolean isNewOp = true;
+    private String currentOp;
 
-    @NotNull
     public final String getOldValue() {
-        return this.oldValue;
+        return oldValue;
     }
 
-    public final void setOldValue(@NotNull String var1) {
-        this.oldValue = var1;
+    public final void setOldValue(String oldValue) {
+        this.oldValue = oldValue;
     }
 
     public final boolean isNewOp() {
-        return this.isNewOp;
+        return isNewOp;
     }
 
-    public final void setNewOp(boolean var1) {
-        this.isNewOp = var1;
+    public final void setNewOp(boolean newOp) {
+        isNewOp = newOp;
     }
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,13 +44,14 @@ public final class MainActivity extends AppCompatActivity {
         this.setContentView(R.layout.activity_main);
     }
 
-    public final void onOperation(@NotNull View view) {
+    public final void onOperation(View view) {
         this.oldValue = ((EditText) findViewById(R.id.result)).getText().toString();
+        currentOp = ((Button) view).getText().toString();
         this.isNewOp = true;
     }
 
     @NotNull
-    public final Operation getOperationClass(@NotNull String operationString) {
+    public final Operation getOperationClass(String operationString) {
         switch (operationString) {
             case "+":
                 return new Add();
@@ -65,7 +66,7 @@ public final class MainActivity extends AppCompatActivity {
         }
     }
 
-    public final void onNumber(@NotNull View view) {
+    public final void onNumber(View view) {
         EditText editText = findViewById(R.id.result);
         if (isNewOp) {
             editText.setText("");
@@ -74,12 +75,23 @@ public final class MainActivity extends AppCompatActivity {
         editText.setText(editText.getText().append(((Button) view).getText().toString()));
     }
 
-    public final void onEqual(@NotNull View view) {
+    public final void onEqual(View view) {
         String newValue = ((EditText) findViewById(R.id.result)).getText().toString();
-        String operationText = ((Button) view).getText().toString();
-        Operation operationClass = getOperationClass(operationText);
-        double finalResult = operationClass.performOperation(Double.parseDouble(newValue), Double.parseDouble(oldValue));
+        Operation operationClass = getOperationClass(currentOp);
+        double finalResult = operationClass.performOperation(Double.parseDouble(oldValue), Double.parseDouble(newValue));
         ((EditText) findViewById(R.id.result)).setText(String.valueOf(finalResult));
         this.isNewOp = true;
+    }
+
+    public void onAc(View view) {
+        ((EditText) findViewById(R.id.result)).setText(String.valueOf("0"));
+        isNewOp = true;
+    }
+
+    public void onPercent(View view) {
+        String text = ((EditText) findViewById(R.id.result)).getText().toString();
+        Double number = Double.parseDouble(text) / 100;
+        ((EditText) findViewById(R.id.result)).setText(number.toString());
+        isNewOp = true;
     }
 }
