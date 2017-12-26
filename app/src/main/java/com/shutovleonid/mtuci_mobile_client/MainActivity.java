@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.shutovleonid.mtuci_mobile_client.operations.Add;
@@ -13,8 +14,6 @@ import com.shutovleonid.mtuci_mobile_client.operations.Divide;
 import com.shutovleonid.mtuci_mobile_client.operations.Multiply;
 import com.shutovleonid.mtuci_mobile_client.operations.Operation;
 import com.shutovleonid.mtuci_mobile_client.operations.Subtract;
-
-import org.jetbrains.annotations.NotNull;
 
 
 public final class MainActivity extends AppCompatActivity {
@@ -50,7 +49,6 @@ public final class MainActivity extends AppCompatActivity {
         this.isNewOp = true;
     }
 
-    @NotNull
     public final Operation getOperationClass(String operationString) {
         switch (operationString) {
             case "+":
@@ -93,5 +91,13 @@ public final class MainActivity extends AppCompatActivity {
         Double number = Double.parseDouble(text) / 100;
         ((EditText) findViewById(R.id.result)).setText(number.toString());
         isNewOp = true;
+    }
+
+    public void sendToServer(View view) {
+        Toast.makeText(getApplicationContext(), "Sending data to server", Toast.LENGTH_LONG).show();
+    }
+
+    public void getFromServer(View view) {
+        Toast.makeText(getApplicationContext(), "Retrieving data from server", Toast.LENGTH_LONG).show();
     }
 }

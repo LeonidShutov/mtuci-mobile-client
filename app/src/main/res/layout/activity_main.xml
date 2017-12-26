@@ -156,7 +156,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="66dp"
         android:orientation="horizontal">
 
         <Button
@@ -182,6 +182,26 @@
             android:layout_weight="1"
             android:onClick="onEqual"
             android:text="=" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/sendToServer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="sendToServer"
+            android:text="@string/send_result_to_server" />
+
+        <Button
+            android:id="@+id/getFromServer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="getFromServer"
+            android:text="@string/retrieve_last_result_from_server" />
     </LinearLayout>
 
 </LinearLayout>
