@@ -3,6 +3,7 @@ package com.shutovleonid.mtuci_mobile_client;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +16,17 @@ import com.shutovleonid.mtuci_mobile_client.operations.Multiply;
 import com.shutovleonid.mtuci_mobile_client.operations.Operation;
 import com.shutovleonid.mtuci_mobile_client.operations.Subtract;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public final class MainActivity extends AppCompatActivity {
 
     private String oldValue = "";
     private boolean isNewOp = true;
     private String currentOp;
+    private APIService mAPIService = ApiUtils.getAPIService();
 
     public final String getOldValue() {
         return oldValue;
@@ -94,10 +100,42 @@ public final class MainActivity extends AppCompatActivity {
     }
 
     public void sendToServer(View view) {
-        Toast.makeText(getApplicationContext(), "Sending data to server", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Sending data to server", Toast.LENGTH_SHORT).show();
+        sendPost(((EditText) findViewById(R.id.result)).getText().toString());
     }
 
+    private void sendPost(String s) {
+        mAPIService.savePost(s).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    Log.i("", "post submitted to API." + response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e("", "Unable to submit post to API.");
+            }
+        });
+    }
+
+
     public void getFromServer(View view) {
-        Toast.makeText(getApplicationContext(), "Retrieving data from server", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Retrieving data from server", Toast.LENGTH_SHORT).show();
+        mAPIService.getPost().enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response.isSuccessful()) {
+                    ((EditText) findViewById(R.id.result)).setText(response.body());
+                    Log.i("", "post submitted to API." + response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.e("", "Unable to submit post to API.");
+            }
+        });
     }
 }
