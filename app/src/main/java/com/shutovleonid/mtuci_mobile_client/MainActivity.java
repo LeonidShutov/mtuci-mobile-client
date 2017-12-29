@@ -9,12 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import com.shutovleonid.mtuci_mobile_client.operations.Add;
 import com.shutovleonid.mtuci_mobile_client.operations.Divide;
 import com.shutovleonid.mtuci_mobile_client.operations.Multiply;
 import com.shutovleonid.mtuci_mobile_client.operations.Operation;
 import com.shutovleonid.mtuci_mobile_client.operations.Subtract;
+
+import java.util.UUID;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +28,7 @@ public final class MainActivity extends AppCompatActivity {
     private boolean isNewOp = true;
     private String currentOp;
     private APIService mAPIService = ApiUtils.getAPIService();
+    private String android_id = UUID.randomUUID().toString();
 
     public final String getOldValue() {
         return oldValue;
@@ -105,7 +107,7 @@ public final class MainActivity extends AppCompatActivity {
     }
 
     private void sendPost(String s) {
-        mAPIService.savePost(s).enqueue(new Callback<String>() {
+        mAPIService.savePost(android_id, s).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {
@@ -123,7 +125,7 @@ public final class MainActivity extends AppCompatActivity {
 
     public void getFromServer(View view) {
         Toast.makeText(getApplicationContext(), "Retrieving data from server", Toast.LENGTH_SHORT).show();
-        mAPIService.getPost().enqueue(new Callback<String>() {
+        mAPIService.getPost(android_id).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()) {

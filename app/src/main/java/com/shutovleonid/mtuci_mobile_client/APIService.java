@@ -5,12 +5,13 @@ import retrofit2.http.Body;
 
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface APIService {
 
-    @POST("/data")
-    Call<String> savePost(@Body String data);
+    @POST("/data/{id}")
+    Call<String> savePost(@Path("id") String id, @Body String data);
 
-    @GET("/data")
-    Call<String> getPost();
+    @GET("/data/{id}")
+    Call<String> getPost(@Path("id") String id);
 }
