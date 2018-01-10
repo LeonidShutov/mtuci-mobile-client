@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mtuci-mobile-client</string>
+    <string name="app_name">client server calc</string>
     <string name="retrieve_last_result_from_server">Retrieve last result from server</string>
     <string name="send_result_to_server">Save result to server</string>
 </resources>
