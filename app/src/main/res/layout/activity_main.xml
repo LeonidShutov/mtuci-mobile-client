@@ -15,7 +15,7 @@
         android:enabled="false"
         android:inputType="textPersonName"
         android:textColor="@color/colorBlack"
-        android:text="0" />
+        android:text="@string/zero" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -30,28 +30,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onAc"
-                android:text="AC" />
+                android:text="@string/ac" />
 
             <Button
                 android:id="@+id/buPlusMinus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onOperation"
-                android:text="+/-" />
+                android:text="@string/plusMinus" />
 
             <Button
                 android:id="@+id/buPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onPercent"
-                android:text="%" />
+                android:text="@string/percent" />
 
             <Button
                 android:id="@+id/buDivide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onOperation"
-                android:text="/" />
+                android:text="@string/divide" />
         </TableRow>
 
         <TableRow
@@ -63,28 +63,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="7" />
+                android:text="@string/seven" />
 
             <Button
                 android:id="@+id/bu8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="8" />
+                android:text="@string/eight" />
 
             <Button
                 android:id="@+id/bu9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="9" />
+                android:text="@string/nine" />
 
             <Button
                 android:id="@+id/buMultiply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onOperation"
-                android:text="*" />
+                android:text="@string/multiply" />
         </TableRow>
 
         <TableRow
@@ -96,28 +96,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="4" />
+                android:text="@string/four" />
 
             <Button
                 android:id="@+id/bu5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="5" />
+                android:text="@string/five" />
 
             <Button
                 android:id="@+id/bu6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="6" />
+                android:text="@string/six" />
 
             <Button
                 android:id="@+id/buMinus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onOperation"
-                android:text="-" />
+                android:text="@string/minus" />
         </TableRow>
 
         <TableRow
@@ -129,28 +129,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="1" />
+                android:text="@string/one" />
 
             <Button
                 android:id="@+id/bu2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="2" />
+                android:text="@string/two" />
 
             <Button
                 android:id="@+id/bu3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onNumber"
-                android:text="3" />
+                android:text="@string/three" />
 
             <Button
                 android:id="@+id/buPlus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onOperation"
-                android:text="+" />
+                android:text="@string/plus" />
         </TableRow>
     </TableLayout>
 
@@ -165,7 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onNumber"
-            android:text="0" />
+            android:text="@string/zero" />
 
         <Button
             android:id="@+id/buDot"
@@ -173,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onNumber"
-            android:text="." />
+            android:text="@string/dot" />
 
         <Button
             android:id="@+id/buEqual"
@@ -181,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onEqual"
-            android:text="=" />
+            android:text="@string/equal" />
     </LinearLayout>
 
     <LinearLayout
